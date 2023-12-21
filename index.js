@@ -183,7 +183,7 @@ app.post('/stats', async (req, res) => {
         const { calledService } = req.body;
         const newStatistic = new Statistic({
             url: calledService,
-            timestamp: new Date().toLocaleString(),
+            timestamp: new Date(new Date().setHours(new Date().getHours() + 1)).toISOString(),
         });
 
         await newStatistic.save();
